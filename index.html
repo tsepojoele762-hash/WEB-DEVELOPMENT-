@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Button Demo</title>
+
+<style>
+    body{font-family:Arial,sans-serif;text-align: center;margin-top: 60px;}
+    p{font-size:28px; margin:20px;}
+    button{font-size:16px;padding:8px 16px;margin:10px;}
+</style>
+</head>
+<body>
+
+<!-- Here I intentionally left html body empty because for my interfaces I create them using Javascript using DOM  -->
+
+<script>
+
+  // DAY OF WEEK SECTION 
+
+  var day_index = 0;
+  var days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday",
+                       "Friday", "Saturday", "Sunday"];
+
+  // Create the paragraph that will show the day
+  var dayParagraph = document.createElement("p");
+  dayParagraph.id = "dayText";
+  dayParagraph.textContent = days_of_week[day_index]; // initial text: "Monday"
+  document.body.appendChild(dayParagraph);
+
+  // Create the button that changes the day
+  var dayButton = document.createElement("button");
+  dayButton.textContent = "Change day";
+  document.body.appendChild(dayButton);
+
+  // Function called when the day button is pressed
+  function changeDay() {
+    day_index = (day_index + 1) % days_of_week.length; // wrap back to 0 after Sunday
+    dayParagraph.textContent = days_of_week[day_index];
+  }
+
+  dayButton.addEventListener("click", changeDay);
+
+
+  // MONTH SECTION (the improvement)
+
+  var month_index = 0;
+  var months_of_year = ["January", "February", "March", "April", "May", "June",
+                         "July", "August", "September", "October", "November", "December"];
+
+  // Create the paragraph that will show the month
+  var monthParagraph = document.createElement("p");
+  monthParagraph.id = "monthText";
+  monthParagraph.textContent = months_of_year[month_index]; // initial text: "January"
+  document.body.appendChild(monthParagraph);
+
+  // Create the button that changes the month
+  var monthButton = document.createElement("button");
+  monthButton.textContent = "Change month";
+  document.body.appendChild(monthButton);
+
+  // A separate function, called when the month button is pressed
+  function changeMonth() {
+    month_index = (month_index + 1) % months_of_year.length; // wrap back to 0 after December
+    monthParagraph.textContent = months_of_year[month_index];
+  }
+
+  monthButton.addEventListener("click", changeMonth);
+
+</script>
+
+</body>
+</html>
